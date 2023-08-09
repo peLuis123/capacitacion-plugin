@@ -2,6 +2,9 @@
 /**
  *
  */
+/**
+ * este metabox ya no se usa pero se toma como ejemplo para la creacion de los demas metabox
+ */
 if( !function_exists('front_page_banner_metabox')){
     add_action( 'cmb2_admin_init', 'front_page_banner_metabox' );
     function front_page_banner_metabox() {
@@ -163,8 +166,87 @@ if( !function_exists ( 'custom_repeatable_metabox' ) ) {
 
 }
 
+/**
+ * En este Metabox iran los campos repetables para la seccion de About Us
+ */
+
+ if( !function_exists ( 'about_repeatable_metabox' ) ) {
+
+    add_action( 'cmb2_admin_init', 'about_repeatable_metabox' );
+    function about_repeatable_metabox() {
+        $prefix='about_repeatable_';
+        $cmb_group = new_cmb2_box( array(
+            'id'           => $prefix.'id',
+            'title'        => esc_html__( 'campo repetible para about', 'cmb2' ),
+            'object_types' => array( 'page' ),
+        ) );
+        $group_field_id = $cmb_group->add_field( array(
+            'id'          => $prefix.'group',
+            'type'        => 'group',
+            'description' => esc_html__( 'Generates items repetibles para about', 'cmb2' ),
+            'options'     => array(
+                'group_title'    => esc_html__( 'Entry {#}', 'cmb2' ),
+                'add_button'     => esc_html__( 'Add Another Entry', 'cmb2' ),
+                'remove_button'  => esc_html__( 'Remove Entry', 'cmb2' ),
+                'sortable'       => true,
+            ),
+        ) );
+        $cmb_group->add_field( array(
+            'name'       => esc_html__( 'Titulo de about', 'cmb2' ),
+            'id'         => $prefix.'title-about',
+            'type'       => 'text',
+        ) );
+        $cmb_group->add_field( array(
+            'name'       => esc_html__( 'descripcion de about', 'cmb2' ),
+            'id'         => $prefix.'descripcion-about',
+            'type'       => 'text',
+        ) );
+
+        $cmb_group -> add_group_field ( $group_field_id, array(
+            'name'       => esc_html__( 'insertar item', 'cmb2' ),
+            'id'         => 'item',
+            'type'       => 'text',
+        ) );
+        $cmb_group -> add_field ( array(
+            'name' => esc_html__( 'Imagen', 'cmb2' ),
+            'desc' => esc_html__( 'Upload your image 470*470', 'cmb2' ),
+            'id'   => 'about1',
+            'type' => 'file',
+        ) );
+        $cmb_group -> add_field ( array(
+            'name' => esc_html__( 'Imagen', 'cmb2' ),
+            'desc' => esc_html__( 'Upload your image 287 * 244', 'cmb2' ),
+            'id'   => 'about2',
+            'type' => 'file',
+        ) );
+        $cmb_group -> add_field ( array(
+            'name' => esc_html__( 'Imagen', 'cmb2' ),
+            'desc' => esc_html__( 'Upload your image 311 * 133', 'cmb2' ),
+            'id'   => 'about3',
+            'type' => 'file',
+        ) );
+
+        $cmb_group -> add_field ( array(
+            'name' => esc_html__( 'Imagen', 'cmb2' ),
+            'desc' => esc_html__( 'Upload your image 311 * 133', 'cmb2' ),
+            'id'   => 'imageAbout1',
+            'type' => 'file',
+        ) );
+        $cmb_group -> add_field ( array(
+            'name' => esc_html__( 'Imagen', 'cmb2' ),
+            'desc' => esc_html__( 'Upload your image 55 * 55', 'cmb2' ),
+            'id'   => 'imageAbout2',
+            'type' => 'file',
+        ) );
 
 
+
+
+
+
+    }
+
+}
 
 
 ?>
