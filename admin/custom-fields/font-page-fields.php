@@ -248,5 +248,80 @@ if( !function_exists ( 'custom_repeatable_metabox' ) ) {
 
 }
 
+/**
+ * En este metabox iran los campos para la seccion de servicios
+ */
+
+ if( !function_exists ( 'services_repeatable_metabox' ) ) {
+
+    add_action( 'cmb2_admin_init', 'services_repeatable_metabox' );
+
+    function services_repeatable_metabox() {
+        $prefix='services_repeatable_';
+        $cmb_group = new_cmb2_box( array(
+            'id'           => $prefix.'id',
+            'title'        => esc_html__( 'Campos repetibles para el services', 'cmb2' ),
+            'object_types' => array( 'page' ),
+        ) );
+        $group_field_id = $cmb_group->add_field( array(
+            'id'          => $prefix.'group',
+            'type'        => 'group',
+            'description' => esc_html__( 'estos repetibles son para el services', 'cmb2' ),
+            'options'     => array(
+                'group_title'    => esc_html__( 'Entry {#}', 'cmb2' ),
+                'add_button'     => esc_html__( 'Add Another Entry', 'cmb2' ),
+                'remove_button'  => esc_html__( 'Remove Entry', 'cmb2' ),
+                'sortable'       => true,
+                'repeatable_max' => 3,
+            ),
+        ) );
+
+        $cmb_group->add_field( array(
+            'name'       => esc_html__( 'Titulo de Services', 'cmb2' ),
+            'description' => esc_html__( 'escriba el titulo principal para servicios', 'cmb2' ),
+            'id'         => $prefix.'title-services',
+            'type'       => 'text',
+        ) );
+        $cmb_group->add_field( array(
+            'name'       => esc_html__( 'Titulo de Services', 'cmb2' ),
+            'description' => esc_html__( 'escriba la descripcion principal para servicios', 'cmb2' ),
+            'id'         => $prefix.'descripcion-services',
+            'type'       => 'text',
+        ) );
+
+        $cmb_group -> add_group_field ( $group_field_id, array(
+            'name'       => esc_html__( 'insertar titulo', 'cmb2' ),
+            'id'         => 'title-service',
+            'description' => esc_html__( 'escriba un titulo para el servicio', 'cmb2' ),
+            'type'       => 'text',
+        ) );
+        $cmb_group -> add_group_field (  $group_field_id, array(
+            'name'        => esc_html__( 'Description', 'cmb2' ),
+            'description' => esc_html__( 'escriba una descripcion para el servicio', 'cmb2' ),
+            'id'          => 'description-service',
+            'type'        => 'textarea_small',
+        ) );
+
+        $cmb_group -> add_group_field ( $group_field_id, array(
+            'name' => esc_html__( 'Imagen', 'cmb2' ),
+            'desc' => esc_html__( 'Upload your image', 'cmb2' ),
+            'id'   => 'background',
+            'type' => 'file',
+        ) );
+        $cmb_group -> add_group_field ( $group_field_id, array(
+            'name' => esc_html__( 'Imagen', 'cmb2' ),
+            'desc' => esc_html__( 'Upload your icon', 'cmb2' ),
+            'id'   => 'icon',
+            'type' => 'file',
+        ) );
+
+
+
+
+
+
+    }
+
+}
 
 ?>
