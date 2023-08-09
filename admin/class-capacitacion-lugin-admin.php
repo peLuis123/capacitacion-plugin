@@ -51,9 +51,12 @@ class Capacitacion_Lugin_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->load_dependecias();
 
 	}
-
+	public function load_dependecias(){
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/font-page-fields.php';
+	}
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
